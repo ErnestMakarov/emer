@@ -17,7 +17,7 @@ export default function Header() {
     <header className="p-4 flex justify-between items-center">
         <p className="text-lg font-bold">EMER</p>
 
-        <div className="md:flex gap-8 hidden">
+        <div className="md:flex gap-8 hidden opacity-50">
           <NavLink to='/' className="hover:underline">
             Home
           </NavLink>
