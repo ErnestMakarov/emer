@@ -59,7 +59,7 @@ export default function Todo() {
             onChange={HandleChange}
           />
           <button
-            className="bg-green-300 px-4 py-2 rounded-xl hover:bg-green-400 cursor-pointer"
+            className="bg-blue-900 px-4 py-2 rounded-xl hover:bg-green-400 cursor-pointer"
             onClick={HandleAdd}
           >
             add
