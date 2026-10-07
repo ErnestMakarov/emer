@@ -14,13 +14,33 @@ export default function Header() {
 
   return (
     <>
-    <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
-        <p className="text-lg font-bold">Ernest</p>
-        <div className="flex gap-4">
-            <p className="underline">log in</p>
+    <header className="py-4 px-10 flex justify-between items-center">
+        <p className="text-lg font-bold">EMER</p>
+
+        <div className="md:flex gap-8 hidden">
+          <NavLink to='/' className="hover:underline">
+            Home
+          </NavLink>
+          <NavLink to='/todo' className="hover:underline">
+            Todo
+          </NavLink>
+          <NavLink to='/settings' className="hover:underline">
+            Settings
+          </NavLink>
+        </div>
+        
+        <div className="flex gap-6 items-center">
+
+          <NavLink to='/' className="md:flex hidden opacity-50 hover:transform hover:scale-105 hover:opacity-100">
+            log in
+          </NavLink>
+          <NavLink to='/' className="md:flex hidden bg-white text-[#030A18] w-20 h-10 rounded-xl flex items-center justify-center hover:transform hover:scale-105">
+            sign up
+          </NavLink>
+
             <button
               type="button"
-              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5"
+              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
               aria-expanded={isMenuOpen}
               onClick={HandleMenuToggle}
             >
@@ -46,6 +66,9 @@ export default function Header() {
           </NavLink>
           <NavLink to='/todo' onClick={HandleMenuClose}>
             Todo
+          </NavLink>
+          <NavLink to='/settings' onClick={HandleMenuClose}>
+            Settings
           </NavLink>
         </nav>
       </div>
