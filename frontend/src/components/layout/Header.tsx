@@ -59,7 +59,7 @@ export default function Header() {
     </header>
 
     {isMenuOpen && (
-      <div className="fixed flex-col inset-0 z-40 flex items-center justify-center bg-[#030A18] opacity-90 text-white">
+      <div className="fixed flex-col inset-0 z-40 flex items-center justify-center bg-[#030A18] backdrop-blur-3xl opacity-95 text-white">
         <nav className='flex flex-col items-center gap-8 text-3xl font-bold'>
           <NavLink to='/' onClick={HandleMenuClose}>
             Home
