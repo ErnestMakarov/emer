@@ -1,1 +1,1 @@
-hi
+project 100% without ai, every line of code was writted by hands
