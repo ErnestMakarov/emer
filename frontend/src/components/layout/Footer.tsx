@@ -1,7 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white p-4">
-        <p>© 2026 Ernest. All rights reserved.</p>
+    <footer className="flex mt-8 border-t-1 border-gray-300 p-4 justify-between items-center md:flex-row flex-col gap-2 opacity-50">
+        <p>© 2026 EMER. All rights reserved.</p> 
+        <p>Better planning for a better future!</p>
     </footer>
   )
 }

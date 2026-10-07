@@ -75,7 +75,7 @@ export default function Todo() {
               <div className="flex items-center gap-2">
                 <input type="checkbox" className="w-4 h-4" />
                 <p className="text-gray-500 text-sm">{index + 1}.</p>
-                <p className="text-gray-700 font-medium">{task}</p>
+                <p className="text-white font-medium">{task}</p>
               </div>
             </div>
           ))}

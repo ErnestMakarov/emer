@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <>
-    <header className="py-4 px-10 flex justify-between items-center">
+    <header className="p-4 flex justify-between items-center">
         <p className="text-lg font-bold">EMER</p>
 
         <div className="md:flex gap-8 hidden">
@@ -45,7 +45,7 @@ export default function Header() {
               onClick={HandleMenuToggle}
             >
               {isMenuOpen ? (
-                <span className="z-41 text-4xl font-light leading-none">X</span>
+                <span className="z-41 text-4xl font-light leading-none">x</span>
               ) : (
                 <span className="flex flex-col gap-1.5">
                   <span className="h-0.5 w-6 rounded-full bg-gray-300"></span>
@@ -59,7 +59,7 @@ export default function Header() {
     </header>
 
     {isMenuOpen && (
-      <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-800 text-white">
+      <div className="fixed flex-col inset-0 z-40 flex items-center justify-center bg-[#030A18] opacity-90 text-white">
         <nav className='flex flex-col items-center gap-8 text-3xl font-bold'>
           <NavLink to='/' onClick={HandleMenuClose}>
             Home
@@ -69,6 +69,14 @@ export default function Header() {
           </NavLink>
           <NavLink to='/settings' onClick={HandleMenuClose}>
             Settings
+          </NavLink>
+        </nav>
+        <nav className='flex gap-8 mt-8 text-lg font-bold items-center mt-30'>
+          <NavLink to='/' onClick={HandleMenuClose}>
+            Log In
+          </NavLink>
+          <NavLink to='/' className="bg-white text-[#030A18] w-20 h-10 rounded-xl flex items-center justify-center hover:transform hover:scale-105" onClick={HandleMenuClose}>
+            Sign Up
           </NavLink>
         </nav>
       </div>
