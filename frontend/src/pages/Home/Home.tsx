@@ -10,7 +10,7 @@ export default function Home() {
         <span className="text-blue-300">one task at a time</span>
         </h1>
         <p className="max-w-md mt-4 opacity-75">A simple and powerful planner to help you stay focused, get things done and reach your goals.</p>
-        <NavLink to='/' className="bg-blue-400 text-white font-bold w-40 h-10 rounded-xl flex items-center justify-center hover:transform hover:scale-105">
+        <NavLink to='/todo' className="bg-blue-400 text-white font-bold w-40 h-10 rounded-xl flex items-center justify-center hover:transform hover:scale-105">
           Get Started
         </NavLink>
       </div>
