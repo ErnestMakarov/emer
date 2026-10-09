@@ -43,9 +43,15 @@ export default function Todo() {
     setTaskInput('')
   }
 
+  function HandleDelete(index: number) {
+    setTasks((previousTasks) =>
+      previousTasks.filter((_, i) => i !== index)
+    )
+  }
+
   return (
-    <section>
-      <p className="bg-gray-700 text-white text-center py-2">
+    <section className="bg-[#030A18] opacity-90 p-4 h-[calc(100vh-160px)] flex flex-col gap-4">
+      <p className="bg-gray-700 text-white text-center py-2 max-w-[200px] rounded-xl opacity-75">
         {new Date().toLocaleDateString('ru-RU')}
       </p>
 
@@ -59,7 +65,7 @@ export default function Todo() {
             onChange={HandleChange}
           />
           <button
-            className="bg-blue-900 px-4 py-2 rounded-xl hover:bg-green-400 cursor-pointer"
+            className="bg-blue-900 px-4 py-2 rounded-xl hover:bg-blue-800 cursor-pointer"
             onClick={HandleAdd}
           >
             add
@@ -77,6 +83,9 @@ export default function Todo() {
                 <p className="text-gray-500 text-sm">{index + 1}.</p>
                 <p className="text-white font-medium">{task}</p>
               </div>
+              <button className="bg-red-900 px-4 py-2 rounded-xl hover:bg-red-800 cursor-pointer" onClick={() => HandleDelete(index)}>
+                delete
+              </button>
             </div>
           ))}
         </div>
