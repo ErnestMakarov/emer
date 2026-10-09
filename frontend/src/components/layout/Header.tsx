@@ -14,19 +14,10 @@ export default function Header() {
 
   return (
     <>
-    <header className="p-4 flex justify-between items-center">
+    <header className="p-4 flex justify-between items-center h-20">
         <NavLink to='/' className="text-lg font-bold">
           <img className='w-40' src="/logo.png" alt="EMER" />
         </NavLink>
-
-        <div className="md:flex gap-8 hidden opacity-50">
-          <NavLink to='/' className="hover:underline">
-            Home
-          </NavLink>
-          <NavLink to='/todo' className="hover:underline">
-            Todo
-          </NavLink>
-        </div>
         
         <div className="flex gap-6 items-center">
 
