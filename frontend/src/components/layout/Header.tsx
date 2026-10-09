@@ -24,9 +24,6 @@ export default function Header() {
           <NavLink to='/todo' className="hover:underline">
             Todo
           </NavLink>
-          <NavLink to='/settings' className="hover:underline">
-            Settings
-          </NavLink>
         </div>
         
         <div className="flex gap-6 items-center">
@@ -66,9 +63,6 @@ export default function Header() {
           </NavLink>
           <NavLink to='/todo' onClick={HandleMenuClose}>
             Todo
-          </NavLink>
-          <NavLink to='/settings' onClick={HandleMenuClose}>
-            Settings
           </NavLink>
         </nav>
         <nav className='flex gap-8 mt-8 text-lg font-bold items-center mt-30'>
