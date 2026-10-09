@@ -2,7 +2,7 @@ import { NavLink } from 'react-router'
 
 export default function LogIn() {
   return (
-    <section className="h-[calc(100vh-260px)]">
+    <section className="h-[calc(100vh-200px)] flex items-center justify-center">
         <div className="bg-gray-800 p-4 rounded-xl max-w-[400px] mx-auto mt-20 flex flex-col gap-2">
             <p className="text-white text-center ">Log In</p>
             <p className="text-gray-400 text-center">

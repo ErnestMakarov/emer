@@ -50,7 +50,7 @@ export default function Todo() {
   }
 
   return (
-    <section className="bg-[#030A18] opacity-90 p-4 h-[calc(100vh-160px)] flex flex-col gap-4">
+    <section className="bg-[#030A18] opacity-90 p-4 h-[calc(100vh-200px)] flex flex-col gap-4">
       <p className="bg-gray-700 text-white text-center py-2 max-w-[200px] rounded-xl opacity-75">
         {new Date().toLocaleDateString('ru-RU')}
       </p>

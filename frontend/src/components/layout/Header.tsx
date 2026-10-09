@@ -15,7 +15,9 @@ export default function Header() {
   return (
     <>
     <header className="p-4 flex justify-between items-center">
-        <NavLink to='/' className="text-lg font-bold">EMER</NavLink>
+        <NavLink to='/' className="text-lg font-bold">
+          <img className='w-40' src="/logo.png" alt="EMER" />
+        </NavLink>
 
         <div className="md:flex gap-8 hidden opacity-50">
           <NavLink to='/' className="hover:underline">
