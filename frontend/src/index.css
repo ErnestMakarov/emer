@@ -4,7 +4,8 @@
 body, html {
   margin: 0;
   padding: 0;
-  background-color: #030A18;
+  background: #020024;
+background: linear-gradient(130deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 60%, rgba(21, 189, 175, 1) 100%);
   color: #FFFFFF;
   font-family: "Montserrat", sans-serif;
 }

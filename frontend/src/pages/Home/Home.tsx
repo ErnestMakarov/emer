@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <section className="p-5 md:ml-20 flex md:justify-between md:h-[calc(100vh-160px)] gap-4 flex-row flex-wrap items-center justify-center">
       <div className="flex flex-col justify-center gap-4 max-w-lg">
-        <p className="flex bg-gray-900 text-white w-50 p-4 rounded-3xl items-center justify-center opacity-75">Your tasks, your goals</p>
+        <p className="flex bg-cyan-900 text-white w-50 p-4 rounded-3xl items-center justify-center opacity-75">Your tasks, your goals</p>
         <h1 className="text-5xl font-bold">Plan your life, <br/>
         <span className="text-blue-300">one task at a time</span>
         </h1>
