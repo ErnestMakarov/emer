@@ -1,19 +1,12 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
+import { TasksService } from './tasks.service.js';
 
 @Controller('tasks')
 export class TasksController {
+  constructor(private readonly tasksService: TasksService) {}
   @Get()
   getTasks() {
-    return [
-      { id: 1,
-        title: 'learn NestJS',
-        completed: false,
-    },
-      { id: 2,
-        title: 'Connect to PostgreSQL',
-        completed: true,
-    },
-    ];
+    return this.tasksService.getTasks();
   }
   @Post()
   createTask(@Body() body: any) {
