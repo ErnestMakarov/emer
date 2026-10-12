@@ -10,7 +10,7 @@ import { CgProfile } from "react-icons/cg";
 export default function WorkspaceLayout() {
   return (
     <div>
-        <header className="h-20 flex justify-between items-center p-4 bg-[#030A18] backdrop-blur-3xl opacity-95 text-white border-b border-gray-700">
+        <header className="h-20 flex justify-between items-center p-4 bg-[#030A18] backdrop-blur-3xl opacity-95 text-white">
             <img src="/logo.png" alt="Logo" className='h-19' />
             <nav className='md:flex hidden gap-8 text-lg font-bold items-center'> 
                 <NavLink to="/workspace/todo">Projects</NavLink>
