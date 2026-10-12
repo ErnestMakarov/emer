@@ -1,0 +1,17 @@
+
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "ernestmakarov.ee",
+      "description": "img to WebP",
+      "status": "In Progress"
+    },
+    {
+      "id": 2,
+      "title": "maardufinswiming.ee",
+      "description": "complete new page",
+      "status": "To Do"
+    }
+  ]
+}
