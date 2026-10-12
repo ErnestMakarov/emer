@@ -9,7 +9,7 @@ export class TasksController {
     return this.tasksService.getTasks();
   }
   @Post()
-  createTask(@Body() body: any) {
-    return body
+  createTask(@Body() body: { title: string, completed: boolean }) {
+    return this.tasksService.createTask(body);
   }
 }
