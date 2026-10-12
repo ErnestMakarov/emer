@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router'
 import App from './App.tsx'
 import Home from '../pages/Home/Home.tsx'
-import Todo from '../pages/Todo/Todo.tsx'
-import Settings from '../pages/Settings/Settings.tsx'
+import Todo from '../workspace/Todo.tsx'
+import Settings from '../workspace/Settings.tsx'
 import LogIn from '../pages/LogIn/LogIn.tsx'
 import SingUp from '../pages/SingUp/SingUp.tsx'
+import WorkspaceLayout from '../components/layout/WorkspaceLayout.tsx'
 
 
 export const router = createBrowserRouter([
@@ -14,15 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home
-      },
-      {
-        path: 'todo',
-        Component: Todo,
-      },
-      {
-        path: 'settings',
-        Component: Settings,
+        Component: Home,
       },
       {
         path: 'login',
@@ -31,6 +24,21 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         Component: SingUp,
+      }
+    ]
+  },
+  
+  {
+    path: '/workspace',
+    Component: WorkspaceLayout,
+    children: [
+      {
+        path: 'todo',
+        Component: Todo,
+      },
+      {
+        path: 'settings',
+        Component: Settings,
       }
     ]
   }

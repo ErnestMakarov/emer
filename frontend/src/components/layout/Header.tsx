@@ -49,13 +49,10 @@ export default function Header() {
     </header>
 
     {isMenuOpen && (
-      <div className="fixed flex-col inset-0 z-40 flex items-center justify-center bg-[#030A18] backdrop-blur-3xl opacity-95 text-white">
+      <div className="fixed flex-right right-0 w-[80%] h-screen flex-col z-40 flex items-center justify-center bg-[#030A18] backdrop-blur-3xl opacity-95 text-white border-l border-gray-700 md:hidden">
         <nav className='flex flex-col items-center gap-8 text-3xl font-bold'>
           <NavLink to='/' onClick={HandleMenuClose}>
             Home
-          </NavLink>
-          <NavLink to='/todo' onClick={HandleMenuClose}>
-            Todo
           </NavLink>
         </nav>
         <nav className='flex gap-8 mt-8 text-lg font-bold items-center mt-30'>
