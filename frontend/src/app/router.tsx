@@ -6,6 +6,7 @@ import Settings from '../workspace/Settings.tsx'
 import LogIn from '../pages/LogIn/LogIn.tsx'
 import SingUp from '../pages/SingUp/SingUp.tsx'
 import WorkspaceLayout from '../components/layout/WorkspaceLayout.tsx'
+import Main from '../workspace/Main.tsx'
 
 
 export const router = createBrowserRouter([
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
     path: '/workspace',
     Component: WorkspaceLayout,
     children: [
+      {
+        path: 'main',
+        Component: Main,
+      },
       {
         path: 'todo',
         Component: Todo,

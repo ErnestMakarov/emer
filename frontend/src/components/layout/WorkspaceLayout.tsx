@@ -5,6 +5,7 @@ import { NavLink } from 'react-router'
 import { IoHome } from "react-icons/io5";
 import { IoSettingsSharp } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { FaCalendarAlt } from "react-icons/fa";
 
 
 export default function WorkspaceLayout() {
@@ -23,14 +24,18 @@ export default function WorkspaceLayout() {
         </main>
      <nav className='fixed inset-x-0 bottom-5 z-40 md:hidden'>
         <div className='flex justify-around items-center bg-[#0C1223] backdrop-blur-3xl opacity-95 text-white h-20 w-[90%] mx-auto rounded-3xl border border-gray-800'>
-          <NavLink to="/workspace/todo" className='flex flex-col items-center gap-1'>
-            <IoHome className='text-xl' />
-            <span className='text-sm'>Projects</span>
-          </NavLink>
-          <NavLink to="/workspace/settings" className='flex flex-col items-center gap-1'>
-            <IoSettingsSharp className='text-xl' />
-            <span className='text-sm'>Settings</span>
-          </NavLink>
+            <NavLink to="/workspace/main" className='flex flex-col items-center gap-1'>
+                <IoHome className='text-xl' />
+                <span className='text-sm'>Main</span>
+            </NavLink>
+            <NavLink to="/workspace/todo" className='flex flex-col items-center gap-1'>
+                <FaCalendarAlt className='text-xl' />
+                <span className='text-sm'>Projects</span>
+            </NavLink>
+            <NavLink to="/workspace/settings" className='flex flex-col items-center gap-1'>
+                <IoSettingsSharp className='text-xl' />
+                <span className='text-sm'>Settings</span>
+            </NavLink>
         </div>
       </nav>
     </div>
