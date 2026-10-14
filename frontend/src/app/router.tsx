@@ -1,13 +1,13 @@
 import { createBrowserRouter } from 'react-router'
 import App from './App.tsx'
 import Home from '../pages/Home/Home.tsx'
-import Todo from '../pages/Workspace/Todo.tsx'
-import Settings from '../pages/Workspace/Settings.tsx'
+import Todo from '../pages/Workspace/Calendar/Calendar.tsx'
+import Settings from '../pages/Workspace/Settings/Settings.tsx'
 import LogIn from '../pages/LogIn/LogIn.tsx'
 import SingUp from '../pages/SingUp/SingUp.tsx'
 import WorkspaceLayout from '../layouts/WorkspaceLayout.tsx'
-import Main from '../pages/Workspace/Main.tsx'
-import Profile from '../pages/Workspace/Profile.tsx'
+import Main from '../pages/Workspace/Main/Main.tsx'
+import Profile from '../pages/Workspace/Profile/Profile.tsx'
 
 
 export const router = createBrowserRouter([

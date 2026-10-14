@@ -11,14 +11,13 @@ import { FaCalendarAlt } from "react-icons/fa";
 export default function WorkspaceLayout() {
   return (
     <div>
-        <header className="h-20 flex justify-between items-center p-4 bg-[#030A18] backdrop-blur-3xl opacity-95 text-white">
+        <header className="h-20 flex justify-between items-center bg-[#030A18] backdrop-blur-3xl opacity-95 text-white">
             <img src="/logo.png" alt="Logo" className='h-19' />
             <nav className='md:flex hidden gap-8 text-lg font-bold items-center'> 
                 <NavLink to='/workspace/main'>Main</NavLink>
                 <NavLink to="/workspace/todo">Projects</NavLink>
                 <NavLink to="/workspace/settings">Settings</NavLink>
             </nav>
-            <CgProfile className='text-3xl ml-4' />
         </header>
         <main>
             <Outlet />
