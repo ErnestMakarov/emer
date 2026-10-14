@@ -24,7 +24,7 @@ export default function Header() {
           <NavLink to='/login' className="md:flex hidden opacity-50 hover:transform hover:scale-105 hover:opacity-100">
             log in
           </NavLink>
-          <NavLink to='/signup' className="md:flex hidden bg-white text-[#030A18] w-20 h-10 rounded-xl flex items-center justify-center hover:transform hover:scale-105">
+          <NavLink to='/signup' className="md:flex hidden bg-white text-[#030A18] w-20 h-10 rounded-xl items-center justify-center hover:transform hover:scale-105">
             sign up
           </NavLink>
 
@@ -55,7 +55,7 @@ export default function Header() {
             Home
           </NavLink>
         </nav>
-        <nav className='flex gap-8 mt-8 text-lg font-bold items-center mt-30'>
+        <nav className='flex gap-8 text-lg font-bold items-center mt-30'>
           <NavLink to='/login' onClick={HandleMenuClose}>
             Log In
           </NavLink>
