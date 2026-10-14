@@ -1,7 +1,8 @@
 export default function Profile() {
   return (
     <section>
-        Profile
+        <p>Hello</p>
+        <p className="text-xl font-bold">Nickname</p>
     </section>
   )
 }

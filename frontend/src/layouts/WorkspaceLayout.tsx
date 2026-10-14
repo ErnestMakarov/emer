@@ -24,18 +24,23 @@ export default function WorkspaceLayout() {
             <Outlet />
         </main>
      <nav className='fixed inset-x-0 bottom-5 z-40 md:hidden'>
-        <div className='flex justify-around items-center bg-[#0C1223] backdrop-blur-3xl opacity-95 text-white h-16 w-[90%] mx-auto rounded-3xl border border-gray-800'>
+        <div className='flex justify-around items-center bg-[#0C1223] backdrop-blur-3xl opacity-95 text-white h-16 w-[90%] mx-auto rounded-2xl border border-gray-800'>
             <NavLink to="/workspace/main" className='flex flex-col items-center gap-1'>
                 <IoHome className='text-xl' />
                 <span className='text-sm'>Main</span>
             </NavLink>
             <NavLink to="/workspace/todo" className='flex flex-col items-center gap-1'>
                 <FaCalendarAlt className='text-xl' />
-                <span className='text-sm'>Projects</span>
+                <span className='text-sm'>Calendar</span>
             </NavLink>
             <NavLink to="/workspace/settings" className='flex flex-col items-center gap-1'>
                 <IoSettingsSharp className='text-xl' />
                 <span className='text-sm'>Settings</span>
+            </NavLink>
+            <NavLink to="/workspace/profile" className='flex flex-col items-center gap-1'>
+                <CgProfile className='text-xl' />
+                <span className='text-sm'>Profile</span>
+
             </NavLink>
         </div>
       </nav>
