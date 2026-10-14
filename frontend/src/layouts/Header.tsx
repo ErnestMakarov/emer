@@ -49,10 +49,10 @@ export default function Header() {
     </header>
 
     {isMenuOpen && (
-      <div className="fixed flex-right right-0 w-[68%] h-screen flex-col z-40 flex items-center justify-center bg-[#030A18] backdrop-blur-3xl opacity-95 text-white border-l border-gray-700 md:hidden">
+      <div className="fixed flex-right right-0 w-full h-screen flex-col z-40 flex items-center justify-center bg-[#030A18] backdrop-blur-3xl opacity-95 text-white border-l border-gray-700 md:hidden">
         <nav className='flex flex-col items-center text-3xl font-bold'>
           <NavLink to='/' onClick={HandleMenuClose}>
-            Home
+            <p className='font-medium underline'>Home</p>
           </NavLink>
         </nav>
         <nav className='flex gap-8 text-lg font-bold items-center mt-30'>

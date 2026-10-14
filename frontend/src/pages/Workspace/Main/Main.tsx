@@ -56,7 +56,7 @@ export default function Main() {
                 <h3 className="font-bold text-xl">Lets do something to <br /> improve the day</h3>
             </div>
             <input type="text" placeholder="Find tasks..." className='mt-4 w-full p-2 bg-[#0C1223] rounded-xl text-gray-500 placeholder:text-gray-500 border border-gray-800 '/>
-            <button onClick={handleMenuToggle} className="mt-4 bg-linear-to-r from-cyan-600 to-blue-800 text-white px-5 py-2 font-bold cursor-pointer rounded-xl">Add new Project</button>
+            <button onClick={handleMenuToggle} className="mt-4 bg-linear-to-r from-cyan-600 to-blue-800 text-white px-5 py-2 font-bold cursor-pointer rounded-tr-xl rounded-bl-xl">Add new Project</button>
         </section>
         
         <section className="px-5 pb-24">
@@ -74,7 +74,7 @@ export default function Main() {
                   {project.description}
                 </p>
 
-                <span className="mt-3 inline-block rounded-lg bg-cyan-300 px-3 py-1 text-sm text-black">
+                <span className="mt-3 right-0 float-end inline-block rounded-tl-lg rounded-bl-lg rounded-br-lg bg-cyan-200 px-3 py-1 text-sm text-black font-bold">
                   {project.status || 'No status'}
                 </span>
               </div>
