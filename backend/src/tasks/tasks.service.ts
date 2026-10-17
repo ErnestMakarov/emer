@@ -1,29 +1,29 @@
+
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service.js';
 
 @Injectable()
 export class TasksService {
-    private tasks = [
-      { id: 1, title: 'learn NestJS', completed: false },
-      { id: 2, title: 'Connect to PostgreSQL', completed: true }
-    ];
+  constructor(private readonly prisma: PrismaService) {}
 
-    getTasks() {
-      return this.tasks;
-    }
+  getTasks() {
+    return this.prisma.task.findMany();
+  }
 
-    createTask(task: {title: string, completed: boolean }) {
-      const maxId = this.tasks.length 
-      ? Math.max(...this.tasks.map(task => task.id))
-      : 0;
+  updateTask(id: number, completed: boolean) {
+    return this.prisma.task.update({
+      where: { id },
+      data: { completed },
+    });
+  }
 
-      const newTask = {
-        id: maxId + 1,
+  createTask(task: { title: string; completed: boolean }) {
+    return this.prisma.task.create({
+      data: {
         title: task.title,
-        completed: task.completed
-      };
-
-      this.tasks.push(newTask);
-
-      return newTask;
-    }
+        completed: task.completed,
+      },
+    });
+  
+  }
 }
