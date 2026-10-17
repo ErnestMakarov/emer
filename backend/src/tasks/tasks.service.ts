@@ -17,6 +17,12 @@ export class TasksService {
     });
   }
 
+  deleteTask(id: number) {
+    return this.prisma.task.delete({
+      where: { id },
+    });
+  }
+
   createTask(task: { title: string; completed: boolean }) {
     return this.prisma.task.create({
       data: {

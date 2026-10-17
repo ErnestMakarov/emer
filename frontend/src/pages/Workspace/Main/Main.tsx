@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
+
 
 type ProjectStatus = 'todo' | 'inProgress' | 'done' | '';
 
@@ -12,6 +13,13 @@ type ProjectStatus = 'todo' | 'inProgress' | 'done' | '';
 export default function Main() {
 
     const [projects, setProjects] = useState<Project[]>([]);
+
+    useEffect(() => {
+      fetch('http://localhost:3000/projects')
+        .then(response => response.json())
+        .then(data => setProjects(data))
+        .catch(error => console.error('Failed to load projects:', error));
+    }, []);
     
     const [projectName, setProjectName] = useState('');
     const [description, setDescription] = useState('');
@@ -27,26 +35,39 @@ export default function Main() {
         setIsOpen(false)
     }
 
-    function handleCreateProject(e: React.FormEvent<HTMLFormElement>) {
-      e.preventDefault();
+  async function handleCreateProject(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
 
-      if (!projectName.trim()) return;
-      
-      const newProject = {
-        id: crypto.randomUUID(),
-        name: projectName,
-        description,
-        status: status
-      };
+    if (!projectName.trim()) return;
+
+    try {
+      const response = await fetch('http://localhost:3000/projects', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: projectName.trim(),
+          description,
+          status: status || 'todo',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create project');
+      }
+
+      const newProject: Project = await response.json();
 
       setProjects(previous => [...previous, newProject]);
-
       setProjectName('');
       setDescription('');
       setStatus('');
       handleMenuClose();
-
-    };
+    } catch (error) {
+      console.error('Failed to create project:', error);
+    }
+  }
 
   return (
     <>
