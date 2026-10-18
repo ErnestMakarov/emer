@@ -15,7 +15,7 @@ export default function Main() {
     const [projects, setProjects] = useState<Project[]>([]);
 
     useEffect(() => {
-      fetch('http://localhost:3000/projects')
+      fetch('https://emer-ba4t.onrender.com/projects')
         .then(response => response.json())
         .then(data => setProjects(data))
         .catch(error => console.error('Failed to load projects:', error));
@@ -41,7 +41,7 @@ export default function Main() {
     if (!projectName.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:3000/projects', {
+      const response = await fetch('https://emer-ba4t.onrender.com/projects', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
