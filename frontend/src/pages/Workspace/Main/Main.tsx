@@ -95,7 +95,7 @@ export default function Main() {
                   {project.description}
                 </p>
 
-                <span className="mt-3 right-0 float-end inline-block rounded-tl-lg rounded-bl-lg rounded-br-lg bg-cyan-200 px-3 py-1 text-sm text-black font-bold">
+                <span className="mt-3 float-end inline-block rounded-tl-lg rounded-bl-lg rounded-br-lg bg-cyan-200 px-3 py-1 text-sm text-black font-bold">
                   {project.status || 'No status'}
                 </span>
               </div>
