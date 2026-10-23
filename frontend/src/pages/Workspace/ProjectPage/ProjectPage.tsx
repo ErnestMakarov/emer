@@ -4,7 +4,7 @@ export default function ProjectPage() {
   const { id } = useParams()
 
   return (
-    <section>
+    <section className="p-5">
       <p>ProjectPage</p>
       <p>Project ID: {id}</p>
     </section>

@@ -8,6 +8,12 @@ export class ProjectsService {
   getProjects() {
     return this.prisma.project.findMany();
   }
+
+  getProjectById(id : string) {
+    return this.prisma.project.findUnique({
+      where: { id },
+    });
+  }
  
   createProject(project: {
     name: string;
