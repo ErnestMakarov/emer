@@ -8,6 +8,7 @@ import SingUp from '../pages/SingUp/SingUp.tsx'
 import WorkspaceLayout from '../layouts/WorkspaceLayout.tsx'
 import Main from '../pages/Workspace/Main/Main.tsx'
 import Profile from '../pages/Workspace/Profile/Profile.tsx'
+import ProjectPage from '../pages/Workspace/ProjectPage/ProjectPage.tsx'
 
 
 export const router = createBrowserRouter([
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: 'profile',
         Component: Profile,
+      },
+      {
+        path: 'projects/:id',
+        Component: ProjectPage,
       }
     ]
   }

@@ -1,4 +1,5 @@
 import { useState, useEffect} from 'react'
+import { Link } from 'react-router'
 
 
 type ProjectStatus = 'todo' | 'inProgress' | 'done' | '';
@@ -83,7 +84,7 @@ export default function Main() {
         <section className="px-5 pb-24">
           <div className="flex flex-col gap-3">
             {projects.map(project => (
-              <div
+              <Link to={`/workspace/projects/${project.id}`}
                 key={project.id}
                 className="rounded-xl border border-gray-800 bg-[#0C1223] p-4"
               >
@@ -98,7 +99,7 @@ export default function Main() {
                 <span className="mt-3 float-end inline-block rounded-tl-lg rounded-bl-lg rounded-br-lg bg-cyan-200 px-3 py-1 text-sm text-black font-bold">
                   {project.status || 'No status'}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
