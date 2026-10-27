@@ -1,4 +1,7 @@
 
+npm i
+npm run dev
+
 Project to learn backend on nestJs & PostgreSQL and 
 instrument for me to organize my time for programming
 
