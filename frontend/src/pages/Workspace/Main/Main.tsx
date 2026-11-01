@@ -14,12 +14,41 @@ type ProjectStatus = 'todo' | 'inProgress' | 'done' | '';
 export default function Main() {
 
     const [projects, setProjects] = useState<Project[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('')
 
     useEffect(() => {
-      fetch('https://emer-ba4t.onrender.com/projects')
-        .then(response => response.json())
-        .then(data => setProjects(data))
-        .catch(error => console.error('Failed to load projects:', error));
+      const controller = new AbortController();
+      
+      async function loadProjects() {
+        try {
+          const response  = await fetch(
+            'https://emer-ba4t.onrender.com/projects',
+            { signal: controller.signal }
+          );
+
+          if (!response.ok) {
+            throw new Error('Failed to load projects');
+          }
+
+          const data: Project[] = await response.json();
+          setProjects(data);
+        } catch (error) {
+          if (error instanceof Error && error.name !== 'AbortError') {
+            console.error('Failed to load projects:', error);
+            setError(error.message)
+          }
+        } finally {
+          if (!controller.signal.aborted) {
+            setLoading(false);
+          }
+        }
+      }
+
+      loadProjects();
+      
+      return () => controller.abort();
+  
     }, []);
     
     const [projectName, setProjectName] = useState('');
@@ -68,6 +97,10 @@ export default function Main() {
     } catch (error) {
       console.error('Failed to create project:', error);
     }
+  }
+
+  if (loading) {
+    return <p className="text-white p-5">Loading...</p>
   }
 
   return (
