@@ -608,7 +608,9 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const TaskScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  completed: 'completed'
+  completed: 'completed',
+  status: 'status',
+  projectId: 'projectId'
 } as const
 
 export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
@@ -618,7 +620,6 @@ export const ProjectScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  status: 'status',
   createdAt: 'createdAt'
 } as const
 
