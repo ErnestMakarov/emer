@@ -1,14 +1,10 @@
 import { useState, useEffect} from 'react'
 import { Link } from 'react-router'
 
-
-type ProjectStatus = 'todo' | 'inProgress' | 'done' | '';
-
     type Project = {
       id: string;
       name: string;
       description: string;
-      status: ProjectStatus;
     };
 
 export default function Main() {
@@ -53,7 +49,6 @@ export default function Main() {
     
     const [projectName, setProjectName] = useState('');
     const [description, setDescription] = useState('');
-    const [status, setStatus] = useState<ProjectStatus>('');
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -79,7 +74,6 @@ export default function Main() {
         body: JSON.stringify({
           name: projectName.trim(),
           description,
-          status: status || 'todo',
         }),
       });
 
@@ -92,7 +86,6 @@ export default function Main() {
       setProjects(previous => [...previous, newProject]);
       setProjectName('');
       setDescription('');
-      setStatus('');
       handleMenuClose();
     } catch (error) {
       console.error('Failed to create project:', error);
@@ -128,10 +121,6 @@ export default function Main() {
                 <p className="mt-1 text-sm text-gray-400">
                   {project.description}
                 </p>
-
-                <span className="mt-3 float-end inline-block rounded-tl-lg rounded-bl-lg rounded-br-lg bg-cyan-200 px-3 py-1 text-sm text-black font-bold">
-                  {project.status || 'No status'}
-                </span>
               </Link>
             ))}
           </div>
@@ -143,7 +132,7 @@ export default function Main() {
         <form onSubmit={handleCreateProject} className="w-[90%] h-auto max-h-[90vh] rounded-lg bg-[#0C1223] p-6 shadow-xl text-white border border-gray-800">
           <div className="flex justify-between">
             <h3 className='font-bold text-xl'>Add new project</h3>
-            <button className='font-bold text-xl' onClick={handleMenuClose}>x</button>
+            <button type="button" className='font-bold text-xl' onClick={handleMenuClose}>x</button>
           </div>
           <p className='mt-4'>Project name</p>
           <input 
@@ -160,32 +149,6 @@ export default function Main() {
             className='mt-2 w-full p-2 bg-[#0C1223] rounded-xl text-white placeholder:text-gray-500 border border-gray-800 '
             placeholder='Description...' 
           />
-
-          <p className='mt-4'>Status</p>
-          <div className="flex gap-5 mt-2">
-            
-            <button
-              type='button'
-              onClick={() => setStatus('todo')}
-              className={`px-5 py-2 border border-gray-800 rounded-xl cursor-pointer ${
-                status === 'todo' ? 'bg-cyan-300' : 'hover:bg-cyan-500'
-              }`}
-            >To do</button>
-            <button
-              type='button'
-              onClick={() => setStatus('inProgress')}
-              className={`px-5 py-2 border border-gray-800 rounded-xl cursor-pointer ${
-                status === 'inProgress' ? 'bg-cyan-300' : 'hover:bg-cyan-500'
-              }`}
-            >In progress</button>
-            <button
-              type='button'
-              onClick={() => setStatus('done')}
-              className={`px-5 py-2 border border-gray-800 rounded-xl cursor-pointer ${
-                status === 'done' ? 'bg-cyan-300' : 'hover:bg-cyan-500'
-              }`}
-            >Done</button>
-          </div>
 
           <button 
             type='submit' 
