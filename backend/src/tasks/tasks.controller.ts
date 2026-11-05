@@ -1,29 +1,33 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { TasksService } from './tasks.service.js';
 
-@Controller('tasks')
+@Controller('')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
-  @Get()
-getTasks() {
-  return this.tasksService.getTasks();
-}
 
-  @Post()
-  createTask(@Body() body: { title: string; completed: boolean }) {
-    return this.tasksService.createTask(body);
+  @Get('projects/:projectId/tasks')
+  getTasks(@Param('projectId') projectId: string) {
+    return this.tasksService.getTasks(projectId);
   }
 
-  @Delete(':id')
-  deleteTask(@Param('id') id: string) {
-    return this.tasksService.deleteTask(Number(id));
+  @Post('projects/:projectId/tasks')
+  createTask(
+    @Param('projectId') projectId: string,
+    @Body() body: { title: string },
+  ) {
+    return this.tasksService.createTask(projectId, body.title);
   }
 
-  @Patch(':id')
+  @Patch('tasks/:id')
   updateTask(
     @Param('id') id: string,
-    @Body() body: { completed: boolean },
+    @Body() body: { status: 'todo' | 'inProgress' | 'done' },
   ) {
-    return this.tasksService.updateTask(Number(id), body.completed);
+    return this.tasksService.updateTask(Number(id), body.status);
+  }
+
+  @Delete('tasks/:id')
+  deleteTask(@Param('id') id: string) {
+    return this.tasksService.deleteTask(Number(id));
   }
 }
