@@ -26,7 +26,6 @@ export class ProjectsController {
     @Body() body: {
       name: string;
       description?: string;
-      status?: string;
     },
   ) {
     return this.projectsService.createProject(body);

@@ -18,13 +18,11 @@ export class ProjectsService {
   createProject(project: {
     name: string;
     description?: string;
-    status?: string;
   }) {
     return this.prisma.project.create({
       data: {
         name: project.name,
         description: project.description ?? '',
-        status: project.status || 'todo',
       },
     });
   }
