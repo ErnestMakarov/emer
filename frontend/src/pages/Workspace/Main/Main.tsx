@@ -1,5 +1,7 @@
 import { useState, useEffect} from 'react'
 import { Link } from 'react-router'
+import { CiSearch } from "react-icons/ci";
+import { GoArrowUpRight } from "react-icons/go";
 
     type Project = {
       id: string;
@@ -100,11 +102,20 @@ export default function Main() {
     <>
         <section className='p-5'>
             <div>
-                <p className="text-gray-500">Today is {new Date().toLocaleDateString('ru-RU')}</p>
-                <h3 className="font-bold text-xl">Lets do something to <br /> improve the day</h3>
+                <div className="flex justify-between text-gray-300">
+                  <p>Hi, Ernest!</p>
+                  <p className="text-gray-300">{new Date().toLocaleDateString('ru-RU')}</p>
+                </div>
+                <h3 className="mt-1 font-bold text-2xl">Your Workspace</h3>
             </div>
-            <input type="text" placeholder="Find tasks..." className='mt-4 w-full p-2 bg-[#0C1223] rounded-xl text-gray-500 placeholder:text-gray-500 border border-gray-800 '/>
-            <button onClick={handleMenuToggle} className="mt-4 bg-linear-to-r from-cyan-600 to-blue-800 text-white px-5 py-2 font-bold cursor-pointer rounded-tr-xl rounded-bl-xl">Add new Project</button>
+            <div className="relative">
+                <CiSearch className="absolute left-3 top-6 text-2xl font-bold" />
+                <input type="text" placeholder="Search projects..." className='mt-4 w-full px-10 py-2 bg-black/10 rounded-xl text-white placeholder:text-gray-500 border border-gray-400  '/>
+            </div>
+            <div className="flex justify-between mt-4">
+                <h3 className="mt-4 font-bold text-xl">Your Projects</h3>
+                <button onClick={handleMenuToggle} className="mt-4 bg-linear-to-r from-cyan-400 to-blue-900 text-white px-5 py-2 font-bold cursor-pointer rounded-tr-xl rounded-bl-xl">New project</button>
+            </div>
         </section>
         
         <section className="px-5 pb-24">
@@ -112,13 +123,16 @@ export default function Main() {
             {projects.map(project => (
               <Link to={`/workspace/projects/${project.id}`}
                 key={project.id}
-                className="rounded-xl border border-gray-800 bg-[#0C1223] p-4"
+                className="rounded-xl border border-gray-500 bg-sky-500/10 p-4"
               >
-                <h3 className="font-bold text-white">
+                <div className="flex justify-between">
+                  <h4 className="font-bold text-white">
                   {project.name}
-                </h3>
+                  </h4>
+                  <GoArrowUpRight className="text-2xl" />
+                </div>
 
-                <p className="mt-1 text-sm text-gray-400">
+                <p className="mt-1 text-sm text-gray-300">
                   {project.description}
                 </p>
               </Link>
@@ -129,7 +143,7 @@ export default function Main() {
 
         {isOpen && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-        <form onSubmit={handleCreateProject} className="w-[90%] h-auto max-h-[90vh] rounded-lg bg-[#0C1223] p-6 shadow-xl text-white border border-gray-800">
+        <form onSubmit={handleCreateProject} className="w-[90%] h-auto max-h-[90vh] rounded-lg bg-black/90 p-6 shadow-xl text-white border border-gray-800">
           <div className="flex justify-between">
             <h3 className='font-bold text-xl'>Add new project</h3>
             <button type="button" className='font-bold text-xl' onClick={handleMenuClose}>x</button>

@@ -8,3 +8,7 @@ body, html {
   color: #FFFFFF;
   font-family: "Montserrat", sans-serif;
 }
+
+img, nav, a, button, input, textarea {
+  user-select: none;
+}
