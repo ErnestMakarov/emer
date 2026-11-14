@@ -115,6 +115,7 @@ export default function Main() {
         </section>
         
         <section className="px-5 pb-24">
+          {error && <p className="mb-3 text-red-400">{error}</p>}
           {loading ? (
             <p className="text-white">Loading projects...</p>
           ) : (
