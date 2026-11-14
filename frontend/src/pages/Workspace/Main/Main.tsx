@@ -94,10 +94,6 @@ export default function Main() {
     }
   }
 
-  if (loading) {
-    return <p className="text-white p-5">Loading...</p>
-  }
-
   return (
     <>
         <section className='p-5'>
@@ -119,25 +115,29 @@ export default function Main() {
         </section>
         
         <section className="px-5 pb-24">
-          <div className="flex flex-col gap-3">
-            {projects.map(project => (
-              <Link to={`/workspace/projects/${project.id}`}
-                key={project.id}
-                className="rounded-xl border border-gray-500 bg-sky-500/10 p-4"
-              >
-                <div className="flex justify-between">
-                  <h4 className="font-bold text-white">
-                  {project.name}
-                  </h4>
-                  <GoArrowUpRight className="text-2xl" />
-                </div>
+          {loading ? (
+            <p className="text-white">Loading projects...</p>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {projects.map(project => (
+                <Link to={`/workspace/projects/${project.id}`}
+                  key={project.id}
+                  className="rounded-xl border border-gray-500 bg-sky-500/10 p-4"
+                >
+                  <div className="flex justify-between">
+                    <h4 className="font-bold text-white">
+                    {project.name}
+                    </h4>
+                    <GoArrowUpRight className="text-2xl" />
+                  </div>
 
-                <p className="mt-1 text-sm text-gray-300">
-                  {project.description}
-                </p>
-              </Link>
-            ))}
-          </div>
+                  <p className="mt-1 text-sm text-gray-300">
+                    {project.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
 
 
