@@ -7,12 +7,6 @@ type Project = {
   description: string
 }
 
-type Task = {
-  id: number
-  title: string
-  status: "todo" | "inProgress" | "done"
-}
-
 export default function ProjectPage() {
   const { id } = useParams()
   const [project, setProject] = useState<Project | null>(null)
