@@ -5,7 +5,12 @@ type Project = {
   id: string
   name: string
   description: string
-  status: string
+}
+
+type Task = {
+  id: number
+  title: string
+  status: "todo" | "inProgress" | "done"
 }
 
 export default function ProjectPage() {
@@ -13,8 +18,9 @@ export default function ProjectPage() {
   const [project, setProject] = useState<Project | null>(null)
   const [loading, setLoading] = useState(true)
 
+
   useEffect(() => {
-    fetch(`http://localhost:3000/projects/${id}`)
+    fetch(`https://emer-ba4t.onrender.com/projects/${id}`)
       .then(response => {
         if(!response.ok) {
           throw new Error('Failed to load project')
@@ -38,8 +44,6 @@ export default function ProjectPage() {
     <section className="p-5">
       <h2 className="text-2xl font-bold">{project.name}</h2>
       <p className="mt-2 text-gray-400">{project.description}</p>
-      <p className="mt-4">Status: {project.status}</p>
-      <p className="mt-2 text-xs text-gray-500">ID: {project.id}</p>
     </section>
   )
 }
