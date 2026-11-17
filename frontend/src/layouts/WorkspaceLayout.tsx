@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router'
+import { Link, Outlet } from 'react-router'
 
 import { NavLink } from 'react-router'
 
@@ -18,7 +18,9 @@ export default function WorkspaceLayout() {
                 <NavLink to="/workspace/todo">Projects</NavLink>
                 <NavLink to="/workspace/settings">Settings</NavLink>
             </nav>
-            <CgProfile className='text-4xl mr-5'/>
+            <Link to="/workspace/profile" className='items-center gap-2 text-sm text-white/50 hover:text-white'>
+                <CgProfile className='text-4xl mr-5'/>
+            </Link>
         </header>
         <main>
             <Outlet />
