@@ -110,7 +110,7 @@ export default function Main() {
             </div>
             <div className="flex justify-between mt-4">
                 <h3 className="mt-4 font-bold text-xl">Your Projects</h3>
-                <button onClick={handleMenuToggle} className="mt-4 bg-linear-to-r from-cyan-700 to-blue-900 text-white px-5 py-2 font-bold cursor-pointer rounded-xl">New project</button>
+                <button onClick={handleMenuToggle} className="mt-4 bg-linear-to-r from-cyan-500 to-blue-500/20 text-white px-5 py-2 font-bold cursor-pointer rounded-xl">New project</button>
             </div>
         </section>
         
