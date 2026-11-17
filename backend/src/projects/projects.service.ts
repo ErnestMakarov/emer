@@ -26,4 +26,10 @@ export class ProjectsService {
       },
     });
   }
+
+  deleteProject(id: string) {
+    return this.prisma.project.deleteMany({
+      where: { id },
+    });
+    }
 }

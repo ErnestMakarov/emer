@@ -1,7 +1,6 @@
-import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { MdDelete } from "react-icons/md";
-import { Link } from 'react-router'
+import { Link, useNavigate, useParams } from 'react-router'
 import { GoArrowLeft } from "react-icons/go";
 
 type Project = {
@@ -24,6 +23,13 @@ export default function ProjectPage() {
   const [tasks, setTasks] = useState<Task[]>([])
 
   const [taskTitle, setTaskTitle] = useState('')
+
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false);
+
+  const [deleteProjectName, setDeleteProjectName] = useState('')
+  const navigate = useNavigate()
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [deleteError, setDeleteError] = useState('')
 
   useEffect(() => {
     fetch(`https://emer-ba4t.onrender.com/projects/${id}`)
@@ -114,11 +120,51 @@ export default function ProjectPage() {
         }
       }
 
+      async function handleDeleteProject() {
+        if (!project || deleteProjectName !== project.name || isDeleting) {
+          return
+        }
+        setIsDeleting(true)
+        setDeleteError('')
+
+        try {
+          const response = await fetch(
+            `https://emer-ba4t.onrender.com/projects/${id}`, 
+            {
+              method: "DELETE"
+            }
+          )
+
+          if (!response.ok) {
+            throw new Error('Failed to delete project')
+          }
+
+          navigate('/workspace/main', { replace: true })
+        } catch (error) {
+          setDeleteError(error instanceof Error ? error.message : 'Failed to delete project. Please try again.')
+        } finally {
+          setIsDeleting(false)
+        }
+      }
+
+      function handleDeleteConfirmation() {
+        setDeleteConfirmation(previous => !previous)
+        setDeleteProjectName("")
+        setDeleteError("")
+      }
+
+
   return (
+    <>
     <section className="p-5">
-      <Link to="/workspace/main" className="flex items-center gap-2 text-sm text-white/50 hover:text-white">
-        <GoArrowLeft /> Back to projects
-      </Link>
+      <div className="flex justify-between">
+        <Link to="/workspace/main" className="flex items-center gap-2 text-sm text-white/50 hover:text-white">
+          <GoArrowLeft /> Back to projects
+        </Link>
+        <button className='text-sm text-white/50 hover:text-white cursor-pointer' onClick={handleDeleteConfirmation}>
+          delete
+        </button>
+      </div>
 
       <h2 className="mt-2 text-2xl font-bold">{project.name}</h2>
       <p className="mt-2 text-gray-400">{project.description}</p>
@@ -153,5 +199,45 @@ export default function ProjectPage() {
         ))}
       </div>
     </section>
+
+    {deleteConfirmation && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+        <div className="w-[90%] h-auto max-h-[90vh] rounded-lg bg-black/90 p-6 shadow-xl text-white border border-gray-800">
+          <h3 className='font-bold text-xl'>Are you sure you want to delete this project?</h3>
+          <p className="mt-4 text-gray-300">
+            This will delete the project and all its tasks.
+            Type "{project.name}" to confirm.
+          </p>
+          <input 
+            type="text"
+            value={deleteProjectName}
+            onChange={event => setDeleteProjectName(event.target.value)}
+            disabled={isDeleting}
+            className="mt-4 w-full rounded-xl border border-white/20 bg-black/10 px-4 py-3 text-white" 
+            placeholder="Type the project name..." 
+          />
+          {deleteError && (
+            <p role="alert" className="mt-2 text-red-500">{deleteError}</p>
+          )}
+          <div className="mt-6 flex justify-end gap-3">
+            <button 
+              onClick={() => setDeleteConfirmation(false)}
+              disabled={isDeleting}
+              className="bg-gray-700 hover:bg-gray-600 text-white px-5 py-2 font-bold cursor-pointer rounded-xl"
+            >
+              Cancel
+            </button>
+            <button 
+              onClick={handleDeleteProject}
+              disabled={deleteProjectName !== project.name || isDeleting}
+              className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 font-bold cursor-pointer rounded-xl disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {isDeleting ? 'Deleting...' : 'Delete'}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   )
 }

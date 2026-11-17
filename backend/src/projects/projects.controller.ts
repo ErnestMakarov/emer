@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, NotFoundException, Delete } from '@nestjs/common';
 import { ProjectsService } from './projects.service.js';
 
 @Controller('projects')
@@ -29,5 +29,16 @@ export class ProjectsController {
     },
   ) {
     return this.projectsService.createProject(body);
+  }
+
+  @Delete(':id')
+  async deleteProject(@Param('id') id: string) {
+    const result = await this.projectsService.deleteProject(id);
+
+    if (result.count === 0) {
+      throw new NotFoundException('Project not found');
+    }
+
+    return { deleted: true };
   }
 }
